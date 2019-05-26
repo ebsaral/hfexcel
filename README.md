@@ -20,6 +20,8 @@ pip install hfexcel
 
 ```python
 from hfexcel import HFExcel
+from htexcel.schemas import DEFAULT_SCHEMA
+
 
 excel_data = {
     "sheets": [
@@ -82,7 +84,7 @@ excel_data = {
 }
 
 hf_workbook = HFExcel.hf_workbook('example.xlsx', set_default_styles=False)
-hf_workbook.filter().populate_with_json(excel_data)
+hf_workbook.filter().populate_with_json(excel_data, schema=DEFAULT_SCHEMA)
 hf_workbook.save()
 ```
 
