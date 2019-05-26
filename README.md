@@ -135,9 +135,12 @@ hf_workbook.save()
 # contributors
 
 - @ebsaral - author
+- feel free to contribute
+
+# dependencies
+
 - @jmcnamara: Based on XlsxWriter https://github.com/jmcnamara/XlsxWriter (to have a human readable object-oriented design on writing Excel documents)
 - @Julian: JSON Schema Validation, jsonschema https://github.com/Julian/jsonschema
-- feel free to contribute
 
 # warning
 
