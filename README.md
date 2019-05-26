@@ -1,4 +1,5 @@
-# hfexcel 0.0.11
+# hfexcel 0.0.11 [![CircleCI](https://circleci.com/gh/ebsaral/hfexcel.svg?style=svg)](https://circleci.com/gh/ebsaral/hfexcel)
+
 human friendly excel creation in python
 
 # development versions of dependencies
