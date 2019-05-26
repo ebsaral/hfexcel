@@ -1,5 +1,11 @@
-# hfexcel
+# hfexcel 0.0.1
 human friendly excel creation in python
+
+# install
+
+```
+pip install hfexcel
+```
 
 # example
 
