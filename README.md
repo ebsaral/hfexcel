@@ -1,4 +1,4 @@
-# hfexcel 0.0.11 [![CircleCI](https://circleci.com/gh/ebsaral/hfexcel.svg?style=svg)](https://circleci.com/gh/ebsaral/hfexcel)
+# hfexcel 0.0.12 [![CircleCI](https://circleci.com/gh/ebsaral/hfexcel.svg?style=svg)](https://circleci.com/gh/ebsaral/hfexcel)
 
 human friendly excel creation in python
 
@@ -7,6 +7,9 @@ human friendly excel creation in python
 - Python 3.x
 - XlsxWriter==1.1.8
 - jsonschema==2.6.0
+- pytest
+- codecov
+- pytest-cov
 
 # install
 
