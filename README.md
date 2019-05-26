@@ -1,4 +1,4 @@
-# hfexcel 0.0.12 [![CircleCI](https://circleci.com/gh/ebsaral/hfexcel.svg?style=svg)](https://circleci.com/gh/ebsaral/hfexcel) [![codecov](https://codecov.io/gh/ebsaral/hfexcel/branch/master/graph/badge.svg)](https://codecov.io/gh/ebsaral/hfexcel)
+# hfexcel 0.0.13 [![CircleCI](https://circleci.com/gh/ebsaral/hfexcel.svg?style=svg)](https://circleci.com/gh/ebsaral/hfexcel) [![codecov](https://codecov.io/gh/ebsaral/hfexcel/branch/master/graph/badge.svg)](https://codecov.io/gh/ebsaral/hfexcel)
 
 human friendly excel creation in python
 
@@ -158,4 +158,3 @@ hf_workbook.save()
 # warning
 
 - Happy path tests are written.
-- Still, not ready for production use. Tests are being written. Feel free to contribute.
