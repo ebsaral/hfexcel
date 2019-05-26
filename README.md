@@ -114,3 +114,7 @@ hf_workbook.save()
 
 
 Based on XlsxWriter https://github.com/jmcnamara/XlsxWriter to have a human readable object-oriented design on writing Excel documents.
+
+# Warning
+
+- Not ready for production use yet. Tests are being written. Feel free to contribute.
