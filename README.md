@@ -20,7 +20,7 @@ pip install hfexcel
 
 ```python
 from hfexcel import HFExcel
-from htexcel.schemas import DEFAULT_SCHEMA
+from hfexcel.schemas import DEFAULT_SCHEMA
 
 
 excel_data = {
