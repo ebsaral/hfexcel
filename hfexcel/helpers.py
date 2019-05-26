@@ -1,4 +1,8 @@
+from jsonschema import validate
+
 from xlsxwriter.utility import xl_rowcol_to_cell
+
+from .schemas import DEFAULT_SCHEMA
 
 
 def get_coor_name(from_row, from_col, to_row, to_col):
@@ -59,6 +63,7 @@ class HFWorkbookFilter:
                                        style_json.get('style'))
 
     def populate_with_json(self, workbook_data):
+        validate(instance=workbook_data, schema=DEFAULT_SCHEMA)
         self._populate_sheets_with_json(workbook_data.get('sheets', []))
         self._populate_styles_with_json(workbook_data.get('styles', []))
         return self

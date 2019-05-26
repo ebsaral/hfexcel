@@ -1,4 +1,4 @@
-# hfexcel 0.0.7
+# hfexcel 0.0.8
 human friendly excel creation in python
 
 # development versions of dependencies
