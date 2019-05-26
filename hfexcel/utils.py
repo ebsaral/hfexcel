@@ -172,7 +172,7 @@ class HFExcelSheet:
 
     def add_column(self,
                    *args,
-                   name,
+                   name='',
                    width=None,
                    cell_format=None,
                    options=None):
@@ -226,7 +226,7 @@ class HFExcelColumn:
     def __init__(self,
                  sheet,
                  *args,
-                 name,
+                 name='',
                  width=None,
                  cell_format=None,
                  options=None):
