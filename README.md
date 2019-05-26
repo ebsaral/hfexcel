@@ -1,6 +1,11 @@
 # hfexcel 0.0.3
 human friendly excel creation in python
 
+# development versions of dependencies
+
+- Python 3.x
+- XlsxWriter==1.1.8
+
 # install
 
 ```
