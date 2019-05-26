@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='hfexcel',
-      version='0.0.5',
+      version='0.0.6',
       description='human friendly excel creation in python',
       long_description=readme(),
       long_description_content_type='text/markdown',

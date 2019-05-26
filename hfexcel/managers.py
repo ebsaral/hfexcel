@@ -1,4 +1,4 @@
-from .utils import HFExcelWorkbook
+from .models import HFExcelWorkbook
 
 
 class HFExcel:

@@ -1,4 +1,4 @@
-from hfexcel import HFWorkbookHelper, HFExcel
+from hfexcel import HFExcel
 
 excel_data = {
     "sheets": [
@@ -61,5 +61,5 @@ excel_data = {
 }
 
 hf_workbook = HFExcel.hf_workbook('example.xlsx', set_default_styles=False)
-hf_workbook.helper.populate_with_json(excel_data)
+hf_workbook.filter().populate_with_json(excel_data)
 hf_workbook.save()

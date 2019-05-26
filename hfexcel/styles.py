@@ -10,6 +10,7 @@ class HFExcelStyle:
 
     def add(self, name, style):
         self.styles[name] = self.workbook.add_format(style)
+        return self
 
     def __getattr__(self, name):
         return self.styles.get(name)
@@ -149,3 +150,4 @@ class HFExcelStyle:
             'font': 'Arial',
             'align': 'center'
         })
+        return self

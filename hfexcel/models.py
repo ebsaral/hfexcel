@@ -2,7 +2,7 @@ from io import BytesIO
 
 import xlsxwriter
 
-from .helpers import get_coor_name, HFWorkbookHelper
+from .helpers import get_coor_name, HFWorkbookFilter
 from .styles import HFExcelStyle
 
 
@@ -25,9 +25,8 @@ class HFExcelWorkbook:
         self._init_workbook(filename, set_default_styles)
 
 
-    @property
-    def helper(self):
-        return HFWorkbookHelper(self)
+    def filter(self):
+        return HFWorkbookFilter(self)
 
     def _init_workbook(self, filename, set_default_styles):
         if filename and isinstance(filename, str):
@@ -178,7 +177,8 @@ class HFExcelSheet:
                    name='',
                    width=None,
                    cell_format=None,
-                   options=None):
+                   options=None,
+                   hide_header=False):
 
         width = width or 1
         if width <= 0:
@@ -191,7 +191,8 @@ class HFExcelSheet:
                                name=name,
                                width=width,
                                cell_format=cell_format,
-                               options=options)
+                               options=options,
+                               hide_header=hide_header)
 
         self._columns.append(column)
         return column, len(self.columns) - 1
@@ -218,6 +219,7 @@ class HFExcelColumn:
     __slots__ = [
         'args',
         'cell_format',
+        'hide_header',
         'name',
         'options',
         '_style',
