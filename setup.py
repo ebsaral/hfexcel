@@ -40,6 +40,5 @@ setup(name='hfexcel',
         'Funding': 'https://github.com/ebsaral/hfexcel',
         'Source': 'https://github.com/ebsaral/hfexcel',
       },
-      setup_requires=["pytest-runner", '.'],
-      tests_require=["pytest", '.'],
+      tests_require=["pytest"],
 )
