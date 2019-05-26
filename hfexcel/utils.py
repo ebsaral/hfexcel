@@ -134,6 +134,9 @@ class HFExcelSheet:
         self.page_width = int(page_width or 1)
         self.page_height = int(page_height or 0)
 
+    def __getitem__(self, key):
+        return self.columns[key]
+
     @property
     def workbook(self):
         return self.hf_workbook.workbook
@@ -238,6 +241,9 @@ class HFExcelColumn:
         self.name = name
         self.options = options
         self._rows = []
+
+    def __getitem__(self, key):
+        return self.rows[key]
 
     @property
     def required_args(self):
