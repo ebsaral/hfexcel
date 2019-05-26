@@ -232,7 +232,8 @@ class HFExcelColumn:
                  name='',
                  width=None,
                  cell_format=None,
-                 options=None):
+                 options=None,
+                 hide_header=False):
         self._sheet = sheet
         self._width = width
         self._style = (len(args) and args[0]) or None
@@ -240,6 +241,7 @@ class HFExcelColumn:
         self.cell_format = cell_format
         self.name = name
         self.options = options
+        self.hide_header = hide_header
         self._rows = []
 
     def __getitem__(self, key):
@@ -278,19 +280,23 @@ class HFExcelColumn:
         return row, len(self.rows) - 1
 
     def save(self, reference_index):
-        self.hf_sheet.sheet.set_column(reference_index,
-                                       reference_index + self.width - 1)
-        if self.width <= 1:
-            new_args = self.required_args + self.args
-            self.hf_sheet.sheet.write(0,
-                                      reference_index,
-                                      *new_args)
+        if self.hide_header:
+            next_row = 0
+            next_row_max = 0
         else:
-            coor_name = get_coor_name(0, reference_index,
-                                      0, reference_index + self.width - 1)
-            self.hf_sheet.sheet.merge_range(coor_name, self.name, self.style)
-        next_row = 1
-        next_row_max = 1
+            self.hf_sheet.sheet.set_column(reference_index,
+                                           reference_index + self.width - 1)
+            if self.width <= 1:
+                new_args = self.required_args + self.args
+                self.hf_sheet.sheet.write(0,
+                                          reference_index,
+                                          *new_args)
+            else:
+                coor_name = get_coor_name(0, reference_index,
+                                          0, reference_index + self.width - 1)
+                self.hf_sheet.sheet.merge_range(coor_name, self.name, self.style)
+            next_row = 1
+            next_row_max = 1
         for row in self.rows:
             _, next_row = row.save(reference_index, next_row)
             next_row_max = max(next_row, next_row_max)
