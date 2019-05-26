@@ -1,4 +1,4 @@
-# hfexcel 0.0.1
+# hfexcel 0.0.2
 human friendly excel creation in python
 
 # install
