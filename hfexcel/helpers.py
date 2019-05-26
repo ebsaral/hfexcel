@@ -63,7 +63,7 @@ class HFWorkbookFilter:
                                        style_json.get('style'))
 
     def populate_with_json(self, workbook_data, schema=None):
-        validate(instance=workbook_data, schema=(schema or DEFAULT_SCHEMA)
+        validate(instance=workbook_data, schema=(schema or DEFAULT_SCHEMA))
         self._populate_sheets_with_json(workbook_data.get('sheets', []))
         self._populate_styles_with_json(workbook_data.get('styles', []))
         return self
