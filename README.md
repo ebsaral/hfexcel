@@ -5,6 +5,7 @@ human friendly excel creation in python
 
 - Python 3.x
 - XlsxWriter==1.1.8
+- jsonschema==2.6.0
 
 # install
 
