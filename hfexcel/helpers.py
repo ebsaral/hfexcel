@@ -30,7 +30,7 @@ class HFWorkbookFilter:
 
     def _populate_columns_with_json(self, sheet, columns):
         for column_json in columns:
-            width = column_json.get('width')
+            width = int(column_json.get('width', 0)) or None
             column_name = column_json.get('name') or self._raise_error(
                 'column name is missing')
             cell_format = column_json.get('cell_format')
@@ -50,7 +50,8 @@ class HFWorkbookFilter:
             data = row_json.get('data') or self._raise_error(
                 'row data is missing')
             args = row_json.get('args', ())
-            row, _ = column.add_row(*args, data=data)
+            width = int(row_json.get('width', 0)) or None
+            row, _ = column.add_row(*args, data=data, width=width)
 
     def _populate_styles_with_json(self, styles):
         for style_json in styles:

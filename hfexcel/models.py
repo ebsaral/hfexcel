@@ -197,9 +197,9 @@ class HFExcelSheet:
         self._columns.append(column)
         return column, len(self.columns) - 1
 
-    def add_row(self, column_index, *args, data=''):
+    def add_row(self, column_index, *args, data='', width=None):
         column = self.columns[column_index]
-        row = column.add_row(*args, data=data)
+        row = column.add_row(*args, data=data, width=None)
         self._curr_row_height = max(
             column.hf_sheet.next_row - 1,
             len(column.rows)
@@ -276,8 +276,8 @@ class HFExcelColumn:
     def rows(self):
         return self._rows
 
-    def add_row(self, *args, data=''):
-        row = HFExcelRow(self, *args, data=data)
+    def add_row(self, *args, data='', width=None):
+        row = HFExcelRow(self, *args, data=data, width=width)
         self.rows.append(row)
         return row, len(self.rows) - 1
 
@@ -311,13 +311,15 @@ class HFExcelRow:
         'data',
         '_style',
         '_column',
+        '_width',
     ]
 
-    def __init__(self, column, *args, data=''):
+    def __init__(self, column, *args, data='', width=None):
         self._column = column
         self.data = data
         self._style = (len(args) and args[0]) or None
         self.args = args and args[1:]
+        self._width = width or 1
 
     @property
     def column(self):
@@ -325,7 +327,9 @@ class HFExcelRow:
 
     @property
     def width(self):
-        return self.column.width
+        if self._width > self.column.width:
+            return self.column.width
+        return self._width
 
     @property
     def hf_sheet(self):
