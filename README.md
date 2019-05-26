@@ -14,6 +14,14 @@ human friendly excel creation in python
 pip install hfexcel
 ```
 
+# features
+
+- Human readable coding, building
+- Object-Obriented based readable models: `HFExcelWorkbook`, `HFExcelSheet`, `HFExcelColumn`, `HFExcelColumn`
+- `HFExcelWorkbookFilter`: Helper class to populate Excel from a JSON data (python `dict`) with a pre-defined json schema. (default:`hfexcel.schemas.DEFAULT_SCHEMA`)
+- `HFExcelWorkbook.output`: Output creation on `filename (string)` input being null, and created `output` parameter with the type `BytesIO` linked to workbook itself
+
+
 # playground
 
 - http://www.hfexcel.io/
