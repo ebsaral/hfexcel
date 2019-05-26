@@ -117,9 +117,16 @@ assert(sheet1[1][1].data == 'Column 2 Row 2')
 hf_workbook.save()
 ```
 
+# example output file
 
-Based on XlsxWriter https://github.com/jmcnamara/XlsxWriter to have a human readable object-oriented design on writing Excel documents.
+- https://github.com/ebsaral/hfexcel/blob/master/example.xlsx
 
-# Warning
+# contributors
+
+- @ebsaral - author
+- @jmcnamara: Based on XlsxWriter https://github.com/jmcnamara/XlsxWriter (to have a human readable object-oriented design on writing Excel documents)
+- feel free to contribute
+
+# warning
 
 - Not ready for production use yet. Tests are being written. Feel free to contribute.
