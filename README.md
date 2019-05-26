@@ -12,6 +12,10 @@ human friendly excel creation in python
 pip install hfexcel
 ```
 
+# playground
+
+- http://www.hfexcel.io/
+
 # example
 
 ```python
