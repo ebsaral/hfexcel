@@ -2,7 +2,7 @@ from io import BytesIO
 
 import xlsxwriter
 
-from hf_excel.helpers import get_coor_name
+from .helpers import get_coor_name, HFWorkbookHelper
 from .styles import HFExcelStyle
 
 
@@ -23,6 +23,11 @@ class HFExcelWorkbook:
         self.filename = filename
         self._set_default_styles = set_default_styles
         self._init_workbook(filename, set_default_styles)
+
+
+    @property
+    def helper(self):
+        return HFWorkbookHelper(self)
 
     def _init_workbook(self, filename, set_default_styles):
         if filename and isinstance(filename, str):
@@ -97,12 +102,10 @@ class HFExcelWorkbook:
             next_col_index = hf_sheet.save(next_col_index)
         return True
 
-    def save(self, close=True, clean=True):
+    def save(self, close=True):
         self._save_sheets()
         if close:
             self.workbook.close()
-        if clean:
-            self.clean()
         return self.workbook
 
 
