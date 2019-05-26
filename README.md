@@ -146,4 +146,5 @@ hf_workbook.save()
 
 # warning
 
-- Not ready for production use yet. Tests are being written. Feel free to contribute.
+- Happy path tests are written.
+- Still, not ready for production use. Tests are being written. Feel free to contribute.
