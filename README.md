@@ -77,6 +77,14 @@ or
 from hfexcel import HFExcel
 
 hf_workbook = HFExcel.hf_workbook('example.xlsx', set_default_styles=False)
+
+hf_workbook.add_style("headline", {
+                "bold": 1,
+                "font_size": 14,
+                "font": "Arial",
+                "align": "center"
+            })
+
 sheet1 = hf_workbook.add_sheet("sheet1", name="Example Sheet 1")
 
 column1 = sheet1.add_column('headline', name='Column 1', width=2)
