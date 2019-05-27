@@ -1,4 +1,5 @@
 from hfexcel import HFExcel
+from hfexcel.extras import InlineInputHelper
 
 
 def example(filename='example.xlsx'):
@@ -141,5 +142,139 @@ def example2(filename='example2.xlsx'):
     print(sheet1[1][1].data)
     assert(sheet1[1][1].data == 'Column 2 Row 2')
 
+    hf_workbook.save()
+    return True
+
+
+def example3(filename='example3.xlsx'):
+    excel_data = {
+        "sheets": [
+            {
+                "key": "sheet1",
+                "name": "Example Sheet 1",
+                "columns": [
+                    {
+                        "name": "Column 1",
+                        "width": 2,
+                        "args": [
+                            "headline"
+                        ]
+                    },
+                    {
+                        "name": "Column 2"
+                    },
+                    {
+                        "name": "Column 3"
+                    }
+                ],
+                "rows": [
+                    [
+                        {
+                            "data": "Column 1 Row 1"
+
+                        },
+                        {
+                            "data": "Column 2 Row 1"
+                        },
+                        {
+                            "data": "Column 3 Row 1"
+                        }
+                    ],
+                    [
+                        {
+                            "data": "Column 1 Row 2"
+
+                        },
+                        {
+                            "data": "Column 2 Row 2"
+                        },
+                        {
+                            "data": "Column 3 Row 2"
+                        }
+                    ],
+                    [
+                        {
+                            "data": "Column 1 Row 3"
+
+                        },
+                        {
+                            "data": "Column 2 Row 3"
+                        },
+                        {
+                            "data": "Column 3 Row 3"
+                        }
+                    ]
+                ]
+            },
+            {
+                "key": "sheet2",
+                "name": "Example Sheet 2",
+                "columns": [
+                    {
+                        "name": "Column 1",
+                        "width": 2
+                    },
+                    {
+                        "name": "Column 2"
+                    },
+                    {
+                        "name": "Column 3"
+                    }
+                ],
+                "rows": [
+                    [
+                        {
+                            "data": "Column 1 Row 1"
+
+                        },
+                        {
+                            "data": "Column 2 Row 1"
+                        },
+                        {
+                            "data": "Column 3 Row 1"
+                        }
+                    ],
+                    [
+                        {
+                            "data": "Column 1 Row 2"
+
+                        },
+                        {
+                            "data": "Column 2 Row 2"
+                        },
+                        {
+                            "data": "Column 3 Row 2"
+                        }
+                    ],
+                    [
+                        {
+                            "data": "Column 1 Row 3"
+
+                        },
+                        {
+                            "data": "Column 2 Row 3"
+                        },
+                        {
+                            "data": "Column 3 Row 3"
+                        }
+                    ]
+                ]
+            }
+        ],
+        "styles": [
+            {
+                "name": "headline",
+                "style": {
+                    "bold": 1,
+                    "font_size": 14,
+                    "font": "Arial",
+                    "align": "center"
+                }
+            }
+        ]
+    }
+
+    hf_workbook = HFExcel.hf_workbook(filename, set_default_styles=False)
+    InlineInputHelper(hf_workbook).populate_with_json(excel_data)
     hf_workbook.save()
     return True

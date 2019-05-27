@@ -1,5 +1,4 @@
 from jsonschema import validate
-
 from xlsxwriter.utility import xl_rowcol_to_cell
 
 from .schemas import DEFAULT_SCHEMA
@@ -11,12 +10,14 @@ def get_coor_name(from_row, from_col, to_row, to_col):
     return f"{start}:{end}"
 
 
-class HFWorkbookFilter:
+class HFWorkbookHelperBase:
     __slots__ = ['bp_workbook']
 
     def __init__(self, bp_workbook):
         self.bp_workbook = bp_workbook
 
+
+class HFWorkbookFilter(HFWorkbookHelperBase):
     def _populate_sheets_with_json(self, sheets):
         for sheet_json in sheets:
             sheet = self.bp_workbook.add_sheet(
