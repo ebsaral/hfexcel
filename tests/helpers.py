@@ -47,6 +47,47 @@ def example(filename='example.xlsx'):
                         ]
                     }
                 ]
+            },
+            {
+                "key": "sheet2",
+                "name": "Example Sheet 2",
+                "columns": [
+                    {
+                        "name": "Column 1",
+                        "width": 2,
+                        "rows": [
+                            {
+                                "data": "Column 1 Row 1"
+
+                            },
+                            {
+                                "data": "Column 1 Row 2"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Column 2",
+                        "rows": [
+                            {
+                                "data": "Column 2 Row 1",
+                            },
+                            {
+                                "data": "Column 2 Row 2",
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Column 3",
+                        "rows": [
+                            {
+                                "data": "Column 3 Row 1"
+                            },
+                            {
+                                "data": "Column 3 Row 2"
+                            }
+                        ]
+                    }
+                ]
             }
         ],
         "styles": [

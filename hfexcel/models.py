@@ -91,14 +91,13 @@ class HFExcelWorkbook:
         self._init_workbook(new_filename, new_default_styles)
 
     def _save_sheets(self):
-        next_col_index = 0
         for hf_sheet in self.hf_sheets:
             hf_sheet.sheet.print_area(0, 0,
                                       hf_sheet.height,
                                       hf_sheet.width)
             hf_sheet.sheet.fit_to_pages(hf_sheet.page_width,
                                         hf_sheet.page_height)
-            next_col_index, _ = hf_sheet.save(next_col_index)
+            hf_sheet.save(0)
         return True
 
     def save(self, close=True):
@@ -129,7 +128,7 @@ class HFExcelSheet:
         self._columns = columns or []
         self._curr_column_pos = 0
         self._curr_row_height = 0
-        self._sheet = self.workbook.add_worksheet()
+        self._sheet = self.workbook.add_worksheet(name=self.name)
         self.page_width = int(page_width or 1)
         self.page_height = int(page_height or 0)
 
