@@ -20,6 +20,7 @@ pip install hfexcel
 # features
 
 - Human readable coding, building
+- Support for any custom json schema: flexible api to build a helper of your own. There are already two helpers which you can see in the examples.
 - Object-Obriented based readable models: `HFExcelWorkbook`, `HFExcelSheet`, `HFExcelColumn`, `HFExcelColumn`
 - `HFExcelWorkbookFilter`: Helper class to populate Excel from a JSON data (python `dict`) with a pre-defined json schema. (default:`hfexcel.schemas.DEFAULT_SCHEMA`)
 - `HFExcelWorkbook.output`: Output creation on `filename (string)` input being null, and created `output` parameter with the type `BytesIO` linked to workbook itself
