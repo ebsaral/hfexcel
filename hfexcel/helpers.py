@@ -17,9 +17,6 @@ class HFWorkbookFilter:
     def __init__(self, bp_workbook):
         self.bp_workbook = bp_workbook
 
-    def _raise_error(self, text):
-        raise ValueError(text)
-
     def _populate_sheets_with_json(self, sheets):
         for sheet_json in sheets:
             sheet = self.bp_workbook.add_sheet(
@@ -35,8 +32,7 @@ class HFWorkbookFilter:
     def _populate_columns_with_json(self, sheet, columns):
         for column_json in columns:
             width = int(column_json.get('width', 0)) or None
-            column_name = column_json.get('name') or self._raise_error(
-                'column name is missing')
+            column_name = column_json.get('name', '')
             cell_format = column_json.get('cell_format')
             options = column_json.get('options')
             args = column_json.get('args', ())
@@ -51,8 +47,7 @@ class HFWorkbookFilter:
 
     def _populate_rows_with_json(self, column, rows):
         for row_json in rows:
-            data = row_json.get('data') or self._raise_error(
-                'row data is missing')
+            data = row_json.get('data') or ''
             args = row_json.get('args', ())
             width = int(row_json.get('width', 0)) or None
             row, _ = column.add_row(*args, data=data, width=width)
