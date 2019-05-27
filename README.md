@@ -1,4 +1,4 @@
-# hfexcel 0.0.14 [![CircleCI](https://circleci.com/gh/ebsaral/hfexcel.svg?style=svg)](https://circleci.com/gh/ebsaral/hfexcel) [![codecov](https://codecov.io/gh/ebsaral/hfexcel/branch/master/graph/badge.svg)](https://codecov.io/gh/ebsaral/hfexcel)
+# hfexcel 0.0.15 [![CircleCI](https://circleci.com/gh/ebsaral/hfexcel.svg?style=svg)](https://circleci.com/gh/ebsaral/hfexcel) [![codecov](https://codecov.io/gh/ebsaral/hfexcel/branch/master/graph/badge.svg)](https://codecov.io/gh/ebsaral/hfexcel)
 
 human friendly excel creation in python
 

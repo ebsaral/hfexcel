@@ -98,7 +98,7 @@ class HFExcelWorkbook:
                                       hf_sheet.width)
             hf_sheet.sheet.fit_to_pages(hf_sheet.page_width,
                                         hf_sheet.page_height)
-            next_col_index = hf_sheet.save(next_col_index)
+            next_col_index, _ = hf_sheet.save(next_col_index)
         return True
 
     def save(self, close=True):
