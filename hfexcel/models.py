@@ -127,11 +127,11 @@ class HFExcelSheet:
         self._columns = columns or []
         self._curr_column_pos = 0
         self._curr_row_height = 0
-        self._sheet = self.workbook.add_worksheet(name=self.name)
         self.page_width = int(page_width or 1)
         self.page_height = int(page_height or 0)
         self._index = len(workbook.hf_sheets)
         self.name = name or key or f"sheet{self._index}"
+        self._sheet = self.workbook.add_worksheet(name=self.name)
 
     def __getitem__(self, key):
         return self.columns[key]
