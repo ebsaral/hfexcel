@@ -111,6 +111,7 @@ class HFExcelSheet:
         "name",
         "page_height",
         "page_width",
+        "_index",
         "_workbook",
         "_sheet",
         "_columns",
@@ -123,16 +124,21 @@ class HFExcelSheet:
     ):
         self._workbook = workbook
         self.key = key
-        self.name = name if name else key
         self._columns = columns or []
         self._curr_column_pos = 0
         self._curr_row_height = 0
         self._sheet = self.workbook.add_worksheet(name=self.name)
         self.page_width = int(page_width or 1)
         self.page_height = int(page_height or 0)
+        self._index = len(workbook.hf_sheets)
+        self.name = name or key or f"sheet{self._index}"
 
     def __getitem__(self, key):
         return self.columns[key]
+
+    @property
+    def index(self):
+        return self._index
 
     @property
     def workbook(self):
