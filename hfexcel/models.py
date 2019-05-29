@@ -8,12 +8,12 @@ from .styles import HFExcelStyle
 
 class HFExcelWorkbook:
     __slots__ = [
-        'filename',
-        'output',
-        '_sheets',
-        '_set_default_styles',
-        '_style',
-        '_workbook',
+        "filename",
+        "output",
+        "_sheets",
+        "_set_default_styles",
+        "_style",
+        "_workbook",
     ]
 
     def __init__(self, filename=None, set_default_styles=True):
@@ -23,7 +23,6 @@ class HFExcelWorkbook:
         self.filename = filename
         self._set_default_styles = set_default_styles
         self._init_workbook(filename, set_default_styles)
-
 
     def filter(self):
         return HFWorkbookFilter(self)
@@ -63,17 +62,20 @@ class HFExcelWorkbook:
     def set_default_styles(self):
         return self.style.set_defaults()
 
-    def add_sheet(self, key, name=None, columns=None, page_width=None,
-                  page_height=None):
+    def add_sheet(
+        self, key, name=None, columns=None, page_width=None, page_height=None
+    ):
         for s in self._sheets:
             if s.key == key:
                 return None
-        sheet = HFExcelSheet(self,
-                             key=key,
-                             name=name,
-                             columns=columns,
-                             page_width=page_width,
-                             page_height=page_height)
+        sheet = HFExcelSheet(
+            self,
+            key=key,
+            name=name,
+            columns=columns,
+            page_width=page_width,
+            page_height=page_height,
+        )
         self.hf_sheets.append(sheet)
         return sheet
 
@@ -86,17 +88,13 @@ class HFExcelWorkbook:
     def clean(self, filename=None, set_default_styles=None):
         self._sheets = []
         new_filename = filename or self.filename
-        new_default_styles = (set_default_styles
-                              or self._set_default_styles)
+        new_default_styles = set_default_styles or self._set_default_styles
         self._init_workbook(new_filename, new_default_styles)
 
     def _save_sheets(self):
         for hf_sheet in self.hf_sheets:
-            hf_sheet.sheet.print_area(0, 0,
-                                      hf_sheet.height,
-                                      hf_sheet.width)
-            hf_sheet.sheet.fit_to_pages(hf_sheet.page_width,
-                                        hf_sheet.page_height)
+            hf_sheet.sheet.print_area(0, 0, hf_sheet.height, hf_sheet.width)
+            hf_sheet.sheet.fit_to_pages(hf_sheet.page_width, hf_sheet.page_height)
             hf_sheet.save(0)
         return True
 
@@ -109,19 +107,20 @@ class HFExcelWorkbook:
 
 class HFExcelSheet:
     __slots__ = [
-        'key',
-        'name',
-        'page_height',
-        'page_width',
-        '_workbook',
-        '_sheet',
-        '_columns',
-        '_curr_column_pos',
-        '_curr_row_height',
+        "key",
+        "name",
+        "page_height",
+        "page_width",
+        "_workbook",
+        "_sheet",
+        "_columns",
+        "_curr_column_pos",
+        "_curr_row_height",
     ]
 
-    def __init__(self, workbook, key, name=None, columns=None, page_width=None,
-                 page_height=None):
+    def __init__(
+        self, workbook, key, name=None, columns=None, page_width=None, page_height=None
+    ):
         self._workbook = workbook
         self.key = key
         self.name = name if name else key
@@ -171,38 +170,39 @@ class HFExcelSheet:
     def columns(self):
         return self._columns
 
-    def add_column(self,
-                   *args,
-                   name='',
-                   width=None,
-                   cell_format=None,
-                   options=None,
-                   hide_header=False):
+    def add_column(
+        self,
+        *args,
+        name="",
+        width=None,
+        cell_format=None,
+        options=None,
+        hide_header=False
+    ):
 
         width = width or 1
         if width <= 0:
-            raise ValueError('Column width cannot be equal or less than 0')
+            raise ValueError("Column width cannot be equal or less than 0")
 
         self._curr_column_pos = self._curr_column_pos + width
 
-        column = HFExcelColumn(self,
-                               *args,
-                               name=name,
-                               width=width,
-                               cell_format=cell_format,
-                               options=options,
-                               hide_header=hide_header)
+        column = HFExcelColumn(
+            self,
+            *args,
+            name=name,
+            width=width,
+            cell_format=cell_format,
+            options=options,
+            hide_header=hide_header
+        )
 
         self._columns.append(column)
         return column, len(self.columns) - 1
 
-    def add_row(self, column_index, *args, data='', width=None):
+    def add_row(self, column_index, *args, data="", width=None):
         column = self.columns[column_index]
         row = column.add_row(*args, data=data, width=None)
-        self._curr_row_height = max(
-            column.hf_sheet.next_row - 1,
-            len(column.rows)
-        )
+        self._curr_row_height = max(column.hf_sheet.next_row - 1, len(column.rows))
         return row
 
     def save(self, reference_index):
@@ -216,25 +216,27 @@ class HFExcelSheet:
 
 class HFExcelColumn:
     __slots__ = [
-        'args',
-        'cell_format',
-        'hide_header',
-        'name',
-        'options',
-        '_style',
-        '_rows',
-        '_sheet',
-        '_width',
+        "args",
+        "cell_format",
+        "hide_header",
+        "name",
+        "options",
+        "_style",
+        "_rows",
+        "_sheet",
+        "_width",
     ]
 
-    def __init__(self,
-                 sheet,
-                 *args,
-                 name='',
-                 width=None,
-                 cell_format=None,
-                 options=None,
-                 hide_header=False):
+    def __init__(
+        self,
+        sheet,
+        *args,
+        name="",
+        width=None,
+        cell_format=None,
+        options=None,
+        hide_header=False
+    ):
         self._sheet = sheet
         self._width = width
         self._style = (len(args) and args[0]) or None
@@ -258,6 +260,13 @@ class HFExcelColumn:
             return None
         return getattr(self.hf_workbook.style, self._style)
 
+    def set_style(self, name, apply_to_rows=False):
+        style = getattr(self.hf_workbook.style, self._style)
+        self._style = name
+        if apply_to_rows:
+            for row in self.rows:
+                row.set_style(name)
+        return style
 
     @property
     def width(self):
@@ -275,7 +284,7 @@ class HFExcelColumn:
     def rows(self):
         return self._rows
 
-    def add_row(self, *args, data='', width=None):
+    def add_row(self, *args, data="", width=None):
         row = HFExcelRow(self, *args, data=data, width=width)
         self.rows.append(row)
         return row, len(self.rows) - 1
@@ -285,16 +294,16 @@ class HFExcelColumn:
             next_row = 0
             next_row_max = 0
         else:
-            self.hf_sheet.sheet.set_column(reference_index,
-                                           reference_index + self.width - 1)
+            self.hf_sheet.sheet.set_column(
+                reference_index, reference_index + self.width - 1
+            )
             if self.width <= 1:
                 new_args = self.required_args + self.args
-                self.hf_sheet.sheet.write(0,
-                                          reference_index,
-                                          *new_args)
+                self.hf_sheet.sheet.write(0, reference_index, *new_args)
             else:
-                coor_name = get_coor_name(0, reference_index,
-                                          0, reference_index + self.width - 1)
+                coor_name = get_coor_name(
+                    0, reference_index, 0, reference_index + self.width - 1
+                )
                 self.hf_sheet.sheet.merge_range(coor_name, self.name, self.style)
             next_row = 1
             next_row_max = 1
@@ -305,15 +314,9 @@ class HFExcelColumn:
 
 
 class HFExcelRow:
-    __slots__ = [
-        'args',
-        'data',
-        '_style',
-        '_column',
-        '_width',
-    ]
+    __slots__ = ["args", "data", "_style", "_column", "_width"]
 
-    def __init__(self, column, *args, data='', width=None):
+    def __init__(self, column, *args, data="", width=None):
         self._column = column
         self.data = data
         self._style = (len(args) and args[0]) or None
@@ -344,6 +347,11 @@ class HFExcelRow:
             return None
         return getattr(self.hf_workbook.style, self._style)
 
+    def set_style(self, name):
+        style = getattr(self.hf_workbook.style, self._style)
+        self._style = name
+        return style
+
     @property
     def required_args(self):
         return (self.data, self.style)
@@ -351,11 +359,8 @@ class HFExcelRow:
     def save(self, column, row):
         if self.width <= 1:
             new_args = self.required_args + self.args
-            self.hf_sheet.sheet.write(row,
-                                      column,
-                                      *new_args)
+            self.hf_sheet.sheet.write(row, column, *new_args)
         else:
-            coor_name = get_coor_name(row, column,
-                                      row, column + self.width - 1)
+            coor_name = get_coor_name(row, column, row, column + self.width - 1)
             self.hf_sheet.sheet.merge_range(coor_name, self.data, self.style)
         return column + self.width, row + 1

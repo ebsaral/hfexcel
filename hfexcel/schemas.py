@@ -13,11 +13,8 @@ DEFAULT_SCHEMA = {
                             "args": {
                                 "type": "array",
                                 "items": {
-                                    "oneOf": [
-                                        {"type": "string"},
-                                        {"type": "integer"}
-                                    ]
-                                }
+                                    "oneOf": [{"type": "string"}, {"type": "integer"}]
+                                },
                             },
                             "columns": {
                                 "type": "array",
@@ -33,9 +30,9 @@ DEFAULT_SCHEMA = {
                                                     "items": {
                                                         "oneOf": [
                                                             {"type": "string"},
-                                                            {"type": "integer"}
+                                                            {"type": "integer"},
                                                         ]
-                                                    }
+                                                    },
                                                 },
                                                 "rows": {
                                                     "type": "array",
@@ -45,46 +42,47 @@ DEFAULT_SCHEMA = {
                                                                 "type": "object",
                                                                 "properties": {
                                                                     "width": {
-                                                                        "type": "integer"},
+                                                                        "type": "integer"
+                                                                    },
                                                                     "data": {
-                                                                        "type": "string"},
+                                                                        "type": "string"
+                                                                    },
                                                                     "args": {
-                                                                        "type": "array"}
+                                                                        "type": "array"
+                                                                    },
                                                                 },
-                                                                "required": [
-                                                                    'data']
+                                                                "required": ["data"],
                                                             }
                                                         ]
-                                                    }
+                                                    },
                                                 },
                                             },
-                                            "required": ["rows"]
+                                            "required": ["rows"],
                                         }
                                     ]
-                                }
-                            }
-                        }
+                                },
+                            },
+                        },
                     }
                 ]
             },
-            "required": ["key", "columns"]
+            "required": ["key", "columns"],
         },
         "styles": {
             "type": "array",
             "items": {
-                "allOf": [{
-                    "type": "object",
-                    "properties": {
-                        "name": {"type": "string"},
-                        "style": {
-                            "type": "object",
-                            "additionalProperties": True
-                        }
-                    },
-                    "required": ["name", "style"]
-                }]
-            }
-        }
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "name": {"type": "string"},
+                            "style": {"type": "object", "additionalProperties": True},
+                        },
+                        "required": ["name", "style"],
+                    }
+                ]
+            },
+        },
     },
-    "required": ["sheets"]
+    "required": ["sheets"],
 }
