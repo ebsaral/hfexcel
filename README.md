@@ -1,6 +1,7 @@
 # hfexcel 0.0.17 [![CircleCI](https://circleci.com/gh/ebsaral/hfexcel.svg?style=svg)](https://circleci.com/gh/ebsaral/hfexcel) [![codecov](https://codecov.io/gh/ebsaral/hfexcel/branch/master/graph/badge.svg)](https://codecov.io/gh/ebsaral/hfexcel)
 
-human friendly excel creation in python
+human friendly excel creation in python.
+simplicity within a certain complexity..
 
 # development versions of dependencies
 
